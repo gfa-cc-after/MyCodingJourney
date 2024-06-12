@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Memories</title>
+    <h1>Jupijupi im alive - Judas scoreboard</h1>
+</head>
+<body>
+
+<form th:action="@{/}" method="post" th:object="${newMemory}">
+    <label for="text">Text</label>
+    <input type="text" id="text" name="text" th:field="*{text}">
+
+    <label for="image">Image</label>
+    <input type="url" id="image" name="image" th:field="*{imageUrl}">
+
+    <label for="happened">Happened at</label>
+    <input type="datetime-local" id="happened" name="happened" th:field="*{happenedAt}">
+
+    <button type="submit">CREATE</button>
+</form>
+
+<p th:text="|current page: ${pageInfo.getPageNumber()}|"></p>
+
+<a th:if="${pageInfo.getPageNumber() != 0}" th:href="@{|/?page=${pageInfo.getPageNumber()-1}|}">Back</a>
+<a th:href="@{|/?page=${pageInfo.getPageNumber()+1}|}">Next</a>
+<ul>
+    <li th:each="memory :${memories}">
+        <div>
+            <p th:text="${memory.text}"></p>
+            <img th:if="${memory.imageUrl != null && !memory.imageUrl.isEmpty()}" th:src="${memory.imageUrl}"
+                 th:alt="${memory.text}"
+                 style="max-width: 200px;"
+            />
+            <div th:text="${memory.votes}"></div>
+            <p th:text="${memory.happenedAt}"></p>
+            <a th:href="@{|/vote/${memory.id}/up|}">UP</a>
+            <a th:href="@{|/vote/${memory.id}/down|}">DOWN</a>
+        </div>
+    </li>
+</ul>
+</body>
+</html>

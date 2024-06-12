@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>webshop</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+
+</head>
+<body>
+<header>
+    <h1>Webshop</h1>
+    <nav>
+        <button type="button">Only Available</button>
+        <button type="button" onclick="sortItemsByCheapestFirst()"> Cheapest First</button>
+        <button type="button" onclick="filterContainsNike()">Contains Nike</button>
+        <button type="button" onclick="getAverageStock()">Average Stock</button>
+        <button type="button" onclick="getMostExpensive()">Most Expensive Available</button>
+
+    </nav>
+</header>
+<main>
+    <h2>Shop Items</h2>
+    <table id="shopItemsTable">
+        <form action="/webshop/search" method="post">
+            <input type="text" name="searchQuery" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity in Stock</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${shopItems}">
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.description}"></td>
+            <td th:text="${item.price}"></td>
+            <td th:text="${item.quantityInStock}"></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+<script>
+    function filterContainsNike() {
+        var table = document.getElementById("shopItemsTable");
+        var rows = table.getElementsByTagName("tr");
+
+        for (var i = 1; i < rows.length; i++) {
+            var name = rows[i].getElementsByTagName("td")[0].innerText;
+            var description = rows[i].getElementsByTagName("td")[1].innerText;
+            if (!name.includes("Nike") && !description.includes("Nike")) {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+
+
+    function getAverageStock() {
+        fetch('/webshop/average-stock') // Fetch the data from the server
+            .then(response => response.json())
+            .then(data => {
+                // Update the content of the main section with the fetched data
+                document.querySelector('main').innerHTML = '<h2>Average Stock: ' + data + '</h2>';
+            })
+            .catch(error => console.error('Error fetching average stock:', error));
+    }
+
+    function getMostExpensive() {
+        fetch('/webshop/most-expensive') // Fetch the data from the server
+            .then(response => response.json())
+            .then(data => {
+                // Update the content of the main section with the fetched data
+                document.querySelector('main').innerHTML = '<h2>Most Expensive Item: ' + data.name + ' - $' + data.price + '</h2>';
+            })
+            .catch(error => console.error('Error fetching most expensive item:', error));
+    }
+
+    function sortItemsByCheapestFirst() {
+        fetch('/webshop/cheapest-first')
+            .then(response => response.json())
+            .then(data => {
+                // Replace the content of the tbody with the received data
+                document.querySelector('tbody').innerHTML = generateShopItemsTable(data);
+            })
+            .catch(error => console.error('Error sorting items:', error));
+    }
+    function generateShopItemsTable(items) {
+        let tableHtml = '';
+        items.forEach(item => {
+            tableHtml += `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.description}</td>
+                    <td>${item.price}</td>
+                    <td>${item.quantityInStock}</td>
+                </tr>
+            `;
+        });
+        return tableHtml;
+    }
+</script>
+</body>
+</html>

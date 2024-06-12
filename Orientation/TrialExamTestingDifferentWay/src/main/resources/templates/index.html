@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Matrix Checker</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .result { color: red; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Matrix Checker</h1>
+    <p>Check if your matrix is increasing!<br>Add a matrix and sit back while the evaluation happens.</p>
+    <form action="/matrix" method="post">
+        <label for="matrix">Enter your matrix:</label><br>
+        <textarea id="matrix" name="matrix" rows="10" cols="30"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="result" th:text="${result}"></div>
+</div>
+</body>
+</html>

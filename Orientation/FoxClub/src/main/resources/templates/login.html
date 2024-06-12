@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/login.css}"/>
+</head>
+<body>
+<div class="login-container">
+    <h2>Welcome to Programmer Fox Club!</h2>
+    <img src="/greenfox.png" alt="Cute Fox Image">
+    <p>Please provide a name, so you can associate it with your pet!</p>
+    <form action="/login" method="post">
+        <input type="text" name="name" placeholder="Enter your pet's name" required>
+        <button type="submit">Login</button>
+    </form>
+    <p th:if="${param.error}" class="error-message">You have provided a name that has not been used before, add it as a new one!</p>
+</div>
+</body>
+</html>

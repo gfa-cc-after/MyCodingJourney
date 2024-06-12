@@ -1,0 +1,39 @@
+/*package P2PchatApp;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import java.net.URI;
+
+@RestController
+public class Controller {
+
+    @GetMapping("/")
+  public String mainPage(){
+      return "mainpage";
+  }
+
+  //https://api.restful-api.dev/objects
+
+
+    // this is how i create simple request
+    @GetMapping("/sendRequest")
+    public ResponseEntity<String> sendRequest() {
+        // replace url with other person url from NGROK
+        String url = "https://api.restful-api.dev/objects ";
+        RestTemplate restTemplate1 = new RestTemplate();
+        ResponseEntity<String> responseEntity = restTemplate1.getForEntity(url, String.class);
+
+        if(responseEntity.getStatusCode().isError()) {
+            System.out.println(responseEntity.getStatusCode());
+            return responseEntity;
+        }
+
+        return responseEntity;
+    }
+
+}
+
+*/

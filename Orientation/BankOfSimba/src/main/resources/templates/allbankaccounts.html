@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Bank Accounts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+        td.king {
+            font-weight: bold;
+            color: gold;
+        }
+        td.bad-guy {
+            color: red;
+        }
+        td.good-guy {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<h1>All Bank Accounts</h1>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>Animal Type</th>
+        <th>King</th>
+        <th>Character Type</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="account, accountStat : ${bankAccounts}">
+        <td th:text="${accountStat.index + 1}"></td>
+        <td th:text="${account.name}"></td>
+        <td th:text="${#numbers.formatDecimal(account.balance, 2, 'COMMA', 2, 'POINT')} + ' Zebra'"></td>
+        <td th:text="${account.animalType}"></td>
+        <td th:class="${account.animalType == 'lion' ? 'king' : ''}">
+            <span th:if="${account.animalType == 'lion'}">King</span>
+        </td>
+        <td th:class="${account.animalType == 'hyena' ? 'bad-guy' : 'good-guy'}">
+            <span th:if="${account.animalType == 'hyena'}">Bad Guy</span>
+            <span th:unless="${account.animalType == 'hyena'}">Good One</span>
+        </td>
+        <td>
+            <form th:action="@{/raiseBalance}" method="post">
+                <input type="hidden" name="accountIndex" th:value="${accountStat.index}" />
+                <button type="submit">Raise Balance</button>
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td><input type="text" name="newName" placeholder="Name" /></td>
+        <td><input type="text" name="newBalance" placeholder="Balance" /></td>
+        <td><input type="text" name="newAnimalType" placeholder="Animal Type" /></td>
+        <td colspan="4">
+            <form th:action="@{/addBankAccount}" method="post">
+                <button type="submit">Add Bank Account</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

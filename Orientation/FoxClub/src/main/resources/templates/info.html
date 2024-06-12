@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <p><a href="/info">Information</a></p>
+    <p><a href="/nutritionStore">Nutrition Store</a></p>
+    <p><a href="/learnTrick">Trick Centre</a></p>
+    <p><a href="#">Action History</a></p>
+</head>
+<body>
+<div class="container">
+    <h2>Information</h2>
+    <div th:if="${fox != null}">
+        <p>This is : <span th:text="${fox.name}"></span></p>
+        <p>He knows : <span th:if="${fox.tricks.size() > 0}" th:text="${fox.tricks}"></span>
+            <span th:if="${fox.tricks.size() == 0}">No tricks yet!</span></p>
+        <p>Food: <span th:text="${fox.food}"></span></p>
+        <p>Drink: <span th:text="${fox.drink}"></span></p>
+    </div>
+    <div th:if="${fox == null}">
+        <p>Fox not found!</p>
+    </div>
+</div>
+</body>
+</html>

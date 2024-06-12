@@ -1,0 +1,21 @@
+<form action="/addInfo" method="post">
+    <input type="hidden" name="name" th:value="${fox.name}" />
+    <div>
+        <p><a href="/info">Information</a></p>
+        <p><a href="/nutritionStore">Nutrition Store</a></p>
+        <p><a href="/learnTrick">Trick Centre</a></p>
+        <p><a href="#">Action History</a></p>
+        <br>
+        <label for="trick">Add Trick:</label>
+        <input type="text" id="trick" name="trick" />
+    </div>
+    <div>
+        <label for="food">Update Food:</label>
+        <input type="text" id="food" name="food" />
+    </div>
+    <div>
+        <label for="drink">Update Drink:</label>
+        <input type="text" id="drink" name="drink" />
+    </div>
+    <button type="submit">Update Info</button>
+</form>

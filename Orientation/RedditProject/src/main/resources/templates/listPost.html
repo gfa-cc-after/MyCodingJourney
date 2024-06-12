@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Posts</title>
+</head>
+<body>
+<h1>List of Posts</h1>
+<div th:each="post : ${posts}">
+    <h2 th:text="${post.title}"></h2>
+    <p th:text="${post.content}"></p>
+    <p th:text="${post.user.username}"></p>
+    <p>Created at: <span th:text="${post.createdAt}"></span></p>
+    <a th:href="@{/upvote/{postId}(postId=${post.id})}">Upvote</a>
+    <a th:href="@{/downvote/{postId}(postId=${post.id})}">Downvote</a>
+</div>
+</body>
+</html>

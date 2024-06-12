@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Peer to Peer Chat program</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
+<body>
+<h1>Peer to Peer Chat program</h1>
+
+<div>
+    <form action="#" th:action="@{/update-username}" method="post">
+        <input type="hidden" name="userId" th:value="${user.id}">
+        <label>Your username:</label>
+        <input type="text" name="username" th:value="${username}" />
+        <button type="submit">Update</button>
+    </form>
+    <div th:if="${error}">
+        <p th:text="${error}">Error message</p>
+    </div>
+</div>
+
+<div>
+    <h2>Messages</h2>
+    <ul>
+        <li>
+            <strong>App:</strong> Hi there! Poc na pivo! Poc na pivo! Poc na pivo!
+        </li>
+        <li th:each="message : ${messages}">
+            <strong th:text="${message.username}">Username</strong>: <span th:text="${message.text}">Message text</span> <span th:text="${message.timestamp}">Timestamp</span>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <form action="#" th:action="@{/add-message}" method="post">
+        <input type="hidden" name="userId" th:value="${user.id}">
+        <label>New Message:</label>
+        <textarea name="text"></textarea>
+        <button type="submit">Send</button>
+
+    </form>
+</div>
+</body>
+</html>

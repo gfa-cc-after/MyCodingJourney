@@ -1,0 +1,7 @@
+#,Name,Type 1,Type 2,Total,HP,Attack,Defense,SP. Atk,SP. Def,Speed,Generation,Legendary
+1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False
+1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False
+1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False
+1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False
+1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False
+1,Bulbasaur,Grass,Poison,318,45,49,49,65,65,45,1,False

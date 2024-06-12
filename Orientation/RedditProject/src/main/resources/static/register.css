@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2; /* Light gray background */
+    color: #333; /* Dark text color */
+}
+
+h1 {
+    padding-left: 290px;
+    align-content: center;
+    color: #666; /* Dark gray heading color */
+}
+
+form {
+    margin: 20px auto; /* Center the form horizontally */
+    padding: 20px;
+    background-color: #fff; /* White background for the form */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    width: 300px;
+}
+
+label {
+    display: block; /* Display labels as block elements */
+    margin-bottom: 10px;
+    color: #666; /* Dark gray label color */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 20px); /* Set input width */
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+button[type="submit"] {
+    background-color: #333; /* Dark background color for the button */
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+/* Hover effect for the submit button */
+button[type="submit"]:hover {
+    background-color: #555; /* Darker background color on hover */
+}

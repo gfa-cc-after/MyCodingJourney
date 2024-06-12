@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Exercise #</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<h1 th:text="${title}"></h1>
+<h2>Add a new dog to the database</h2>
+<form method="post" th:action="@{/add}">
+    <label>
+        Name:
+        <input name="name" type="text">
+    </label>
+    <label>
+        Age:
+        <input name="age" type="number">
+    </label>
+    <label>
+        Breed:
+        <input name="breed" type="text">
+    </label>
+    <button type="submit">Add</button>
+</form>
+<h3 th:if="${dogs.size() == 0}"> No dogs 😅😓 🐕</h3>
+<table th:if="${dogs.size() != 0}">
+    <thead>
+    <tr>
+        <td>Name</td>
+        <td>Age</td>
+        <td>Breed</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dog : ${dogs}">
+        <td th:text="${dog.name}"></td>
+        <td th:text="${dog.age}"></td>
+        <td th:text="${dog.breed}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
