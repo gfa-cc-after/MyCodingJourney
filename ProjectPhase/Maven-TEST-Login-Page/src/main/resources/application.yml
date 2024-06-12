@@ -6,8 +6,8 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/mydb
-    username: rooto
-    password: passwordo
+    username: root
+    password: 032615
   jpa:
     hibernate:
       ddl-auto: create-drop
