@@ -3,13 +3,12 @@ package MavenLoginPageTest.Maven.TEST.Login.Page.models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
+@Table(name = "test1db") //putting name same as db name i created in DOCKER
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
