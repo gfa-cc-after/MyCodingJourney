@@ -29,3 +29,11 @@ You are now connected to database "test1db" as user "postgres".
 test1db=# \c test1db
 test1db=#
 
+8 NOW THAT WE HAVE INSTALLED Nodejs we run node in powershell terminal (gitbash not working)
+
+9   node -v   npm -v  npx -v   // test if all works
+
+10    npx create-react-app frontend
+
+11    npm start  <<<<<<<<<<<
+
