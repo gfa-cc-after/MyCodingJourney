@@ -7,7 +7,7 @@ spring:
     name: Users
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/facebook
+    url: jdbc:postgresql://localhost:5432/testdb1
     username: postgres
     password: password
   jpa:
@@ -16,5 +16,5 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgresSQLDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
