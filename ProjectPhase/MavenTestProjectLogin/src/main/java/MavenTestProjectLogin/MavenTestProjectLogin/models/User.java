@@ -1,4 +1,4 @@
-package MavenTestProjectLogin.MavenTestProjectLogin;
+package MavenTestProjectLogin.MavenTestProjectLogin.models;
 
 
 import jakarta.persistence.*;
