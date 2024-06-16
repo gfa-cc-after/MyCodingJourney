@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "-": "^0.0.1",
+    "antd": "^4.13.0",
+    "customize-cra": "^1.0.0",
+    "unfetch": "^4.2.0"
+  }
+}
